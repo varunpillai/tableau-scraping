@@ -101,7 +101,10 @@ class TableauScraper:
                 self.logger, self.data, self.info, rootDashboard=self.dashboard)
         except (AttributeError):
             raise TableauException(message=r)
-
+            
+    def getViewIds(self):
+        return self.info["worldUpdate"]["applicationPresModel"]["workbookPresModel"]["dashboardPresModel"]["viewIds"]
+    
     def getWorkbook(self) -> TableauWorkbook:
         return dashboard.getWorksheets(self, self.data, self.info)
 
